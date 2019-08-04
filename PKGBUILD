@@ -138,9 +138,9 @@ build() {
   export CFLAGS="${CFLAGS} -g -Og"
 
   # We need RPATH to point to the "lib32" in our prefix
-  _RPATH="-rpath=/opt/wine-custom/lib32"
+  #_RPATH="-rpath=/opt/wine-custom/lib32"
   # Export all this via LDFLAGS
-  export LDFLAGS="$LDFLAGS,$_RPATH,$_LINKER"
+  #export LDFLAGS="$LDFLAGS,$_RPATH,$_LINKER"
 
   # Make sure everything builds for 32bit
   export CFLAGS="-m32 $CFLAGS"
