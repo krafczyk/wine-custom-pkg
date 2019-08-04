@@ -1,10 +1,8 @@
 post_install() {
   echo
   echo 'Please note:'
-  echo 'You have to call the League Of Legends executable with the command'
-  echo '"/opt/wine-lol/bin/wine" instead of just "wine".'
-  echo 'This allows you to have an up-to-date wine-staging installed in'
-  echo 'parallel to this "special LoL wine build"'
+  echo 'Use "/opt/wine-custom/bin/wine" instead of just "wine".'
+  echo 'This allows you to use your custom wine build.'
   echo
 }
 
