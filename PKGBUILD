@@ -6,12 +6,6 @@
 # Contributor: Eduardo Romero <eduardo@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
-# Contains fixes to make League Of Legends work.
-# One fix requires a "hacked" glibc (wine-lol-glibc on AUR).
-# Some history:
-# Primary bug report: https://bugs.winehq.org/show_bug.cgi?id=47198
-# Additional crash fix: https://bugs.winehq.org/show_bug.cgi?id=45667#c5
-
 pkgname=wine-custom
 pkgver=4.12.1
 pkgrel=1
@@ -47,7 +41,6 @@ depends=(
   gcc-libs         lib32-gcc-libs
   libpcap          lib32-libpcap
   desktop-file-utils
-  wine-lol-glibc
 )
 
 makedepends=(autoconf ncurses bison perl fontforge flex
@@ -146,8 +139,6 @@ build() {
 
   # We need RPATH to point to the "lib32" in our prefix
   _RPATH="-rpath=/opt/wine-custom/lib32"
-  # Dyamic linker has to be the one in wine-custom-glibc
-  _LINKER="-dynamic-linker=/opt/wine-custom/lib32/ld-linux.so.2"
   # Export all this via LDFLAGS
   export LDFLAGS="$LDFLAGS,$_RPATH,$_LINKER"
 
@@ -166,7 +157,7 @@ build() {
     --with-xattr \
     --libdir=/opt/wine-custom/lib32
 
-  make depend LDRPATH_INSTALL="-Wl,$_RPATH,$_LINKER" # Use wine-lib-glibc for -install
+  #make depend LDRPATH_INSTALL="-Wl,$_RPATH,$_LINKER" # Use wine-lib-glibc for -install
   make
 }
 
